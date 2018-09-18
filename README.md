@@ -1,3 +1,5 @@
+# WARNING: WORK IN PROGRESS
+
 # Formaty plików:
 
 |  Format  |       narzędzia        |  dodatkowo (warto znać co najmniej na poziomie "z czym to się je")   |
