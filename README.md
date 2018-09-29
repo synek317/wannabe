@@ -2,22 +2,25 @@
 
 # Formaty plików:
 
-|  Format  |       narzędzia        |  dodatkowo (warto znać co najmniej na poziomie "z czym to się je")   |
-|----------|------------------------|----------------------------------------------------------------------|
-| CSV      | cut, column, grep, awk | TSV, escape'owanie (\" vs "")                                        |
-| JSON     | jq                     | mongodb, bson                                                        |
-| XML      | xmllint, xmlstarlet    | DTD, XSD, XSLT, namespaces, SOAP                                     |
-| YAML     |                        | dlaczego yaml jest zły: https://stackoverflow.com/a/21699210/7687388 |
-| TOML     |                        |                                                                      |
-| Markdown |                        |                                                                      |
+|  Format  |       narzędzia        |      dodatkowo (warto znać co najmniej na poziomie "z czym to się je")       |
+|----------|------------------------|------------------------------------------------------------------------------|
+| CSV      | cut, column, grep, awk | TSV, escape'owanie (\" vs "")                                                |
+| JSON     | jq                     | mongodb, bson                                                                |
+| XML      | xmllint, xmlstarlet    | XPATH (to warto chociaż trochę przećwiczyć) DTD, XSD, XSLT, namespaces, SOAP |
+| YAML     |                        | dlaczego yaml jest zły: https://stackoverflow.com/a/21699210/7687388         |
+| TOML     |                        |                                                                              |
+| Markdown |                        |                                                                              |
 
 - dla każdego formatu ogarnąć formatowanie i walidację (pomijając może yaml i toml)
 
 # Podstawy basha
 
-- grep (-r, -l, -e), awk, cut (-d, -f), cat, ls (-l, -h, -s, -Sr, -Tr), find (-name, -mindepth/maxdepth -type, -mtime, -exec, -delete), xargs (-n), df (-h), du (-shc), less (wiele plików, -S (word wrap) -i (case in/sensitive, F (live fetch)), time, watch, htop, ps (aux), kill (sygnały! wystarczy pobieżnie wiedzieć jakie są i wiedzieć co robi -9 (SIGKILL))
+- grep (-r, -l, -e), awk, cut (-d, -f), cat, ls (-l, -h, -s, -Sr, -Tr, -a), find (-name, -mindepth/maxdepth -type, -mtime, -exec, -delete), xargs (-n), df (-h), du (-shc), less (wiele plików, -S (word wrap) -i (case in/sensitive, F (live fetch)), time, watch, htop, ps (aux), kill (sygnały! wystarczy pobieżnie wiedzieć jakie są i wiedzieć co robi -9 (SIGKILL))
 - ssh (klucz publiczny / klucz prywatny, agent forwarding)
 - git: https://www.gitbook.com/; projekt na githubie, minimum: clone, commit, branch, push, pull, merge, log, wypadałoby rebase
+- chmod, użytkownicy, grupy, sudo, su, su -i
+- skrypty startowe
+- aliasy
 
 # Architektura:
 
@@ -39,7 +42,7 @@
 - dependency injection
 - SOLID
 - KISS, YAGNI (te dwie załatwiają moim zdaniem cały solid i całe wzorce projektowe ;])
-
+- semantic versioning (https://semver.org/)
 
 # Programowanie:
 - low level:
@@ -75,10 +78,12 @@
   - dlaczego const w c++ jest gówniany w porównaniu do mut w ruście (i nie tylko dlatego, że w ruście jest const by default ;))
 - inne:
   - typowanie mocne / słabe, dynamiczne / statyczne. Co ma jakie zalety a jakie wady?
+  - co to jest AST?
 
 # Algorytmy i struktury danych:
 - jak działa hashmapa? Co to jest hash. Do czego służy, jakie musi mieć właściwości?
 - co to jest złożoność obliczeniowa? Notacja dużego O
+- strategie rozwiązywania problemów: metoda zachłanna, dziel i zwyciężaj, programowanie dynamiczne
 
 # Testowanie:
 - testy jednostkowe, integracyjne, akceptacyjne, wydajnościowe, black box, end-to-end
@@ -86,25 +91,29 @@
 - CI, CD (wystarczy żebyś wiedział co to)
 
 # Programowanie wielowątkowe / równoległe
-- to jest dość zaawansowane. Na początek wystarczy bardzo pobieżna wiedza: co to jest wątek, jakie są główne problemy (np. dwa wątki zapisują jednocześnie do zmiennej), jak uruchomić / zabić wątek
-- później: jak sobie radzić z problemami wielowątkowości (mutex, semaphore, interlocked), join, co to jest threadpool
+- jest dość zaawansowane. Na początek wystarczy bardzo pobieżna wiedza: co to jest wątek, jakie są główne problemy (np. dwa wątki zapisują jednocześnie do zmiennej), jak uruchomić / zabić wątek
+- później: jak sobie radzić z problemami wielowątkowości (mutex, semaphore, interlocked/atomic, waitgroup, cancellation token, condvar, barrier), join, co to jest threadpool
 - dlaczego w ruście programanie wielowątkowe jest bajecznie fajne?
 
 # Edycja tekstu:
 - polecam sublime lub visual studio code
-- ogarniaj skróty jak (windows/linux - na macu są inne): shift + strzałki, ctrl + strzałki, shift + ctrl + strzałki, [ctrl]+[shift]+home, [ctrl]+[shift]+end, delete / insert, ctrl + d (zaznaczanie tego samego słowa), ctrl + f, ctrl + h (znajdź i zamień), regexy, ctrl + [-] \(wróc do poprzedniego miejsca, czasem w niektórych edytorach jest inaczej a ctrl - zmniejsza tekst, polecam zmienić keybindings w tym wypadku)
+- ogarniaj skróty jak (windows/linux - na macu są inne): shift + strzałki, ctrl + strzałki, shift + ctrl + strzałki, [ctrl]+[shift]+home, [ctrl]+[shift]+end, delete / insert, ctrl + d (zaznaczanie tego samego słowa), ctrl + f, ctrl + h (znajdź i zamień), regexy, ctrl + [-] (wróc do poprzedniego miejsca, czasem w niektórych edytorach jest inaczej a ctrl - zmniejsza tekst, polecam zmienić keybindings w tym wypadku)
 - terminal - ogarnij terminator (dzielenie okna ctrl + o/e, alt + strzałki), ctrl+k do kasowania słowa, ctrl+r (szukanie w historii), ogarnij kopiowanie i wklejanie w terminalu (skrótami, nie myszką, chociaż zaznaczać i tak trzeba myszką...)
 - ogarnij edytor tekstu w konsoli:
   - vim - wystraczy tyle, żebyś wiedział, jak z niego wyjść ;D Ale nic nie zaszkodzi, jeśli przez tydzień będziesz używał wyłącznie vima, a nuż ci przypadnie do gustu?
   - nano - bardzo prosty, bardzo przydatny, wszędzie obecny
   - emacs - wystarczy, żebyś wiedział, że jest
 
-# Zadania:
-
+# Zadania
 Wszystkie zadania wykonuj na linuksie, a projekty przechowuj w gicie. To "sztuczna" wiedza, ale w ten sposób napotkasz ogrom "codziennych" problemów i zdobędziesz bardzo dużo wiedzy.
-
 Staraj się nic nie robić ręcznie. Refactor (np. zmienienie nazwy zmiennej której używasz w 20 miejscach) staraj się robić automatycznie, np. używając regexów. Postaraj się dodawać testy unitowe do swoich rozwiązań
 
+## Proste programy pomagające postawić pierwsze kroki w nowym języku programowania:
+- wąż
+- pong
+- tetris
+
+## Rozwijające zadania ułatwiające zdobycie nowej wiedzy
 - napisz prosty program w assemblerze. To moze byc chocby wyswietlenie hello world albo np. jakas prosta animacja w konsoli (np. pojawiajacy sie tekst literka po literce)
 - stworz program ktory bedzie deserializowal kazdy z wymienionych wyżej typów (nie musisz sam pisać deserializera, użyj gotowych libek)
 - napisz w haskellu: quicksort, drzewo, inne szkolne programy
@@ -115,3 +124,5 @@ Staraj się nic nie robić ręcznie. Refactor (np. zmienienie nazwy zmiennej kt�
 - napisz dowolny program w ruby. Niech ma przynajmniej jedną jakąś zależność (libkę). Alternatywnie możesz użyć pythona
 - napisz dowolny frontend w js (np. w angularze, reactcie, vue). Wykorzystaj jakiś framework css, np. twitter bootstrap. Dowiedz się co to npm i dlaczego js to gówno.
 - napisz swój własny webservice (możesz to połączyć z zadaniem wyżej, czyli piszesz backend który nasłuchuje i wystawia jakieś metody i frontend, który z tego korzysta)
+- napisz kalkulator ONP
+- napisz program do wydawania reszty (załóżmy, że automat ma nieskończoną liczbę monet każdego nominału, wydaj kwotę w optymalny sposób, tj. wydając jak najmniej monet. Możesz też zmodyfikować ten problem i ustalić losową liczbę monet na początku)
